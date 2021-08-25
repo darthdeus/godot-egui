@@ -78,6 +78,10 @@ pub struct GodotEgui {
     /// When enabled, no texture filtering will be performed. Useful for a pixel-art style.
     #[property]
     disable_texture_filtering: bool,
+
+    /// When enabled, anti_aliasing will be performed. Useful for a pixel-art style.
+    #[property]
+    disable_anti_aliasing: bool,
 }
 
 fn register_properties(builder: &ClassBuilder<GodotEgui>) {
@@ -112,6 +116,7 @@ impl GodotEgui {
             scroll_speed: 20.0,
             consume_mouse_events: true,
             disable_texture_filtering: false,
+            disable_anti_aliasing: false,
         }
     }
 
@@ -119,6 +124,11 @@ impl GodotEgui {
     /// custom fonts defined as properties
     #[export]
     fn _ready(&mut self, _owner: TRef<Control>) {
+        // self.egui_ctx.memory().options.tessellation_options = TessellationOptions {
+        //     anti_alias: !self.disable_anti_aliasing,
+        //     ..self.egui_ctx.memory().options.tessellation_options
+        // };
+
         // Run a single dummy frame to ensure the fonts are created, otherwise egui panics
         self.egui_ctx.begin_frame(egui::RawInput::default());
         let _ = self.egui_ctx.end_frame();

@@ -127,6 +127,7 @@ dependencies = [
  "atomic_refcell",
  "emath",
  "ordered-float",
+ "parking_lot",
 ]
 
 [[package]]
@@ -252,6 +253,7 @@ name = "godot_egui"
 version = "0.1.6"
 dependencies = [
  "egui",
+ "epaint",
  "gdnative",
 ]
 
