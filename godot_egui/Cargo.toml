@@ -13,4 +13,4 @@ workspace = ".."
 
 [dependencies]
 gdnative = "0.9.3"
-egui = "0.13"
+egui = "0.14"
